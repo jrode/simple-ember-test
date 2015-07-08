@@ -124,6 +124,17 @@
 	});
 
 	Bx.ListController = Ember.Controller.extend({
+		queryParams: ['search'],
+		search: '',
+
+		filteredThings: function() {
+			var search = this.get('search');
+			var things = this.get('model.things');
+			return !search ? things : things.filter(function(thing) {
+				return (new RegExp(search, 'gi')).test(thing.get('name'));
+			});
+		}.property('model.things.@each', 'search'),
+
 		actions: {
 			deleteThing: function(id) {
 				staticThings.splice(id, 1);

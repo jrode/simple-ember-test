@@ -25,8 +25,9 @@
 
 	<script type="text/x-handlebars" data-template-name="list">
 		<h2>List of things</h2>
+		{{input placeholder="Search" value=search}}
 		<ul>
-			{{#each model.things as |thing|}}
+			{{#each filteredThings as |thing|}}
 				<li>{{#link-to "thing" thing.id}}{{thing.name}}{{/link-to}}
 					<a href {{action "deleteThing" thing.id}}>x</a>
 				</li>
