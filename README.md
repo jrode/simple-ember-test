@@ -14,6 +14,7 @@ This guide focuses on just the first one, Ember.js itself, to provide some real-
 
 ## Resources
 
+- [Neat MVC diagram on Quora](http://www.quora.com/What-is-the-best-way-to-learn-Ember-js)
 - [Ember builds](http://emberjs.com/builds/)
 - [Ember API](http://emberjs.com/api/)
 - [Todo MVC](http://todomvc.com/)
