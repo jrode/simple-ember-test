@@ -1,0 +1,68 @@
+<html>
+<head>
+	<title>Simple Ember App</title>
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="//builds.emberjs.com/release/ember.debug.js"></script>
+	<script type="text/javascript" src="//builds.emberjs.com/release/ember-template-compiler.js"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+</head>
+
+<body>
+
+	<script type="text/x-handlebars" data-template-name="application">
+		<div>
+			{{#if isListPage}}
+				{{#link-to "new"}}Create new thing{{/link-to}}
+			{{else}}
+				{{#link-to "list"}}Back to List{{/link-to}}
+			{{/if}}
+		</div>
+
+		{{outlet}}
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="list">
+		<h2>List of things</h2>
+		<ul>
+			{{#each model.things as |thing|}}
+				<li>{{#link-to "thing" thing.id}}{{thing.name}}{{/link-to}}
+					<a href {{action "deleteThing" thing.id}}>x</a>
+				</li>
+			{{else}}
+				<li>No things found!</li>
+			{{/each}}
+		</ul>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="new">
+		<h1>Create a new thing</h1>
+
+		<div>
+			<label>Name</label>
+			{{input type="text" value=name}}
+		</div>
+		<div>
+			<label>Details</label>
+			{{textarea value=details}}
+		</div>
+
+		<a href="#" {{action "saveNew"}}>Save new thing</a>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="thing/view">
+		<h1>{{model.name}}</h1>
+		<p>{{model.details}}</p>
+
+		<p>{{#link-to "thing.edit" model.id}}Edit this thing{{/link-to}}</p>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="thing/edit">
+		<h1>{{model.name}}</h1>
+		<div>{{input type="text" value=model.name}}</div>
+		<div>{{textarea value=model.details}}</div>
+
+		<a href="#" {{action "saveChanges"}}>Save changes</a>
+	</script>
+
+</body>
+</html>
