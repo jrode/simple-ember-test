@@ -16,6 +16,8 @@
 			{{else}}
 				{{#link-to "list"}}Back to List{{/link-to}}
 			{{/if}}
+
+			{{random}}
 		</div>
 
 		{{outlet}}
@@ -63,6 +65,11 @@
 
 		<a href="#" {{action "saveChanges"}}>Save changes</a>
 	</script>
+
+	<script type="text/x-handlebars" data-template-name="random">
+		{{view.randomText}}
+	</script>
+
 
 </body>
 </html>

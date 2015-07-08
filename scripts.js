@@ -158,6 +158,30 @@
 		}
 	});
 
+	/***********
+	 *  views  *
+	 ***********/
+
+	// inspired by https://github.com/Octo-Labs/stupid-simple-ember-app/blob/master/js/app.js
+	Bx.RandomView = Ember.View.extend({
+		layoutName: 'random',
+		tagName: 'span',
+		classNames: ['random-num'],
+
+		randomText: 'Mouse event binding...',
+
+		click: function(e) {
+			this.set('randomText', 'click!');
+		},
+
+		mouseMove : function(e) {
+			var randomText = 'x:' + e.screenX + ' y:' + e.screenY;
+			this.set('randomText', randomText);
+		}
+	});
+
+	Ember.Handlebars.helper('random', Bx.RandomView);
+
 })();
 
 
